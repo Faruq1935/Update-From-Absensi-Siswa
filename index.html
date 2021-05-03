@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css" title="" type="" />
+  <title>Form absensi</title>
+</head>
+<body>
+  <h1 id="title">Absensi Untuk Semua Kelas</h1>
+  <p id="description">Silahkan absen di bawah sesuai kelas dan jurusan</p>
+  <form id="survey-form" name="survey-form">
+    <label for="nama" id="nama-label">
+      Nama
+    <input type="text" name="nama" id="nama" placeholder="Masukan Nama"/>
+    </label>
+    
+    <label for="username" id="username-label">
+      User Name
+    <input type="text" name="user-name" id="username" placeholder="Masukan User Name"/>
+    </label>
+    
+    <label for="kelas" id="kelas-label">
+      Kelas
+    <input type="number" name="kelas" id="kelas" placeholder="Kamu Kelas Berapa ?" min="10" max="12"/>
+    </label>
+    
+    <label for="dropdown" id="dropdown">
+      Jurusan Kamu
+      <select id="dropdown" name="jurusan">
+        <option>---</option>
+        <option>TKP</option>
+        <option>AKL</option>
+        <option>TB</option>
+        <option>TKR</option>
+        <option>TBSM</option>
+        <option>TKJ</option>
+      </select>
+    </label>
+    
+    <label for="member" id="member-label" > Keterangan Kamu Hari ini ? </label>
+ 
+    <input type="radio" value="Hadir" name="keterangan" checked /> Hadir <br />
+    <input type="radio" value="Sakit" name="keterangan" /> Sakit <br />
+    <input type="radio" value="Ijin" name="keterangan" /> Ijin <br />
+    <input type="radio" value="Bolos" name="keterangan" /> Bolos <br />
+<button class="btn1" type="submit">Kirim</button>
+<button class="btn2 d-none" type="submit"><span class="btn22">
+  Kirim
+</span>
+  
+</button>
+
+
+   </form>
+   
+   <div class="footer">
+     <p class="copy">
+                  &copy; copyright 2021 | Build by <a href="https://www.facebook.com/profile.php?id=100009944859170">Faruq <br>1935</a> </p>
+   </div>
+   <!-- script -->
+   <script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbyS3nbUvrTnSDXBM22FeNzUfEFROp6-xTH3fqTp1TQZRT4ikN83ho5Mz4lcrICzW5KerA/exec';
+  const form = document.forms['survey-form']
+  const btnKirim = document.querySelector('.btn1')
+  const btnLoading = document.querySelector('.btn2')
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    
+    //nalika tombol kirim di klik
+    //ilangke tombol kirim katoke tombol loading
+    btnLoading.classList.toggle('d-none'
+      )
+    btnKirim.classList.toggle('d-none')
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => {
+        //ilangke tombol loading katoke tombol Kirim
+        btnLoading.classList.toggle('d-none')
+         btnKirim.classList.toggle('d-none')
+         //mereset form
+         form.reset();
+      console.log('Success!', response);
+      })
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
+   <!-- akhit script -->
+</body>
+</html>
