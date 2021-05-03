@@ -1,4 +1,4 @@
-# Update-From-Absensi-Siswa
+# Update-Form-Absensi-Siswa
 Form ini sudah di update 
 Di buat dengan html CSS Javascript
 Dan di hubungkan dengan google spread sheet
